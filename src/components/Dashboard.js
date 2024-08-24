@@ -81,7 +81,7 @@ const Dashboard = () => {
             <h1 className="text-2xl text-black font-bold">CNAPP Dashboard</h1>
           </div>
           <div className="flex gap-2">
-            <Button variant="outlined" onClick={() => setOpen(true)}>Add Widget<AddIcon className='pl-2' /></Button>
+            <Button variant="outlined" size='small' onClick={() => setOpen(true)}>Add Widget<AddIcon className='pl-2' /></Button>
             <Button variant="outlined" size="small"><CachedIcon /></Button>
             <Button variant="outlined" size="small"><MoreVertIcon /></Button>
             <Button variant="outlined"><WatchLaterIcon /> | Last 2 Days<ExpandMoreIcon /></Button>

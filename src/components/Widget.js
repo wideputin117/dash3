@@ -43,7 +43,7 @@ const Widget = ({ widget, onRemove }) => {
             width={400}
             height={190}
           >
-            <PieCenterLabel>{total} TOTAL</PieCenterLabel>
+            <PieCenterLabel>{total}TOTAL</PieCenterLabel>
           </PieChart>
           </div>
           <div className="mt-2">

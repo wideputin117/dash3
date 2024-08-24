@@ -1,4 +1,6 @@
 import React from 'react';
+import AddIcon from '@mui/icons-material/Add';
+
 import Widget from './Widget';
 import { Button } from '@mui/material';
 
@@ -20,7 +22,7 @@ const Category = ({ category, onAddWidget, onRemoveWidget }) => {
           className="p-4 bg-gray-200 border rounded-md shadow-md w-5/12 h-60 flex items-center justify-center text-gray-600 cursor-pointer"
           onClick={() => onAddWidget(category.id)}
         >
-          <Button variant="outlined">Add Widget</Button>
+          <Button variant="outlined">Add Widget<AddIcon className='pl-1' fontSize='small'/></Button>
         </div>
       </div>
     </div>
