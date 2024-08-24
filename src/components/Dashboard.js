@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import initialJsonData from '../data';
 import Category from './Category';
-import AddWidgetDialog from './AddWidgetModal'
+import AddWidgetDialog from './AddWidgetModal';
 import CachedIcon from '@mui/icons-material/Cached';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
+import AddIcon from '@mui/icons-material/Add';
+
+import Navbar from './Searchbar';
 
 const Dashboard = () => {
   const [data, setData] = useState(initialJsonData);
   const [open, setOpen] = useState(false);
   const [newWidget, setNewWidget] = useState({ name: '', text: '' });
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleOpen = (categoryId) => {
     setSelectedCategoryId(categoryId);
@@ -62,15 +66,22 @@ const Dashboard = () => {
     setData({ ...data, categories: updatedCategories });
   };
 
+  const filteredCategories = data.categories.map((category) => ({
+    ...category,
+    widgets: category.widgets.filter(widget => 
+      widget.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  }));
+
   return (
-    <div className='bg-slate-50'>
-      <div className="text-3xl text-red-600 h-max bg-red-200 text-wrap">Dashboard</div>
-      <div className="bg-slate-50 flex justify-between items-center px-8 py-4">
+    <div className='bg-slate-200'>
+      <Navbar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+      <div className="bg-slate-200 flex justify-between items-center px-1 py-4">
           <div>
             <h1 className="text-2xl text-black font-bold">CNAPP Dashboard</h1>
           </div>
           <div className="flex gap-2">
-            <Button variant="outlined">Add Widget</Button>
+            <Button variant="outlined" onClick={() => setOpen(true)}>Add Widget<AddIcon className='pl-2' /></Button>
             <Button variant="outlined" size="small"><CachedIcon /></Button>
             <Button variant="outlined" size="small"><MoreVertIcon /></Button>
             <Button variant="outlined"><WatchLaterIcon /> | Last 2 Days<ExpandMoreIcon /></Button>
@@ -78,7 +89,7 @@ const Dashboard = () => {
       </div>
 
       <div>
-        {data.categories.map((category) => (
+        {filteredCategories.map((category) => (
           <Category
             key={category.id}
             category={category}

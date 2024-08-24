@@ -1,6 +1,7 @@
 import React from 'react';
 import Widget from './Widget';
 import { Button } from '@mui/material';
+
 const Category = ({ category, onAddWidget, onRemoveWidget }) => {
   return (
     <div className="bg-slate-200 p-4">
@@ -16,7 +17,7 @@ const Category = ({ category, onAddWidget, onRemoveWidget }) => {
           />
         ))}
         <div
-          className="p-4 bg-gray-200 border rounded-md shadow-md w-5/12 h-56 flex items-center justify-center text-gray-600 cursor-pointer"
+          className="p-4 bg-gray-200 border rounded-md shadow-md w-5/12 h-60 flex items-center justify-center text-gray-600 cursor-pointer"
           onClick={() => onAddWidget(category.id)}
         >
           <Button variant="outlined">Add Widget</Button>

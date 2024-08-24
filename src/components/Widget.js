@@ -28,23 +28,23 @@ const Widget = ({ widget, onRemove }) => {
       return (
         <div className="flex flex-col items-center justify-center w-full h-full p-4">
           <div className="w-full flex items-center justify-center mb-2">
-            <PieChart
-              series={[
-                { 
-                  data: widget.data, 
-                  innerRadius: 80,
-                  label: {
-                    position: 'outside',
-                    align: 'center',
-                    formatter: ({ label }) => label,
-                  },
-                }
-              ]}
-              width={400} // Increased width for better fit
-              height={190} // Increased height for better fit
-            >
-              <PieCenterLabel>{total}</PieCenterLabel>
-            </PieChart>
+          <PieChart
+            series={[
+              { 
+                data: widget.data, 
+                innerRadius: 80,
+                label: {
+                  position: 'outside',
+                  align: 'center',
+                  formatter: ({ label, value }) => `${label}: ${value}`, // Display both label and value
+                },
+              }
+            ]}
+            width={400}
+            height={190}
+          >
+            <PieCenterLabel>{total} TOTAL</PieCenterLabel>
+          </PieChart>
           </div>
           <div className="mt-2">
             <p className="text-center">{widget.name}</p>
@@ -59,8 +59,8 @@ const Widget = ({ widget, onRemove }) => {
   };
 
   return (
-    <div className="p-4 bg-gray-50 border rounded-md shadow-md w-5/12 h-56 relative overflow-hidden"> {/* Adjusted width and height */}
-      <h3 className="text-lg font-medium absolute top-2 left-2">{widget.name}</h3>
+    <div className="p-4 bg-gray-50 border rounded-md shadow-md w-5/12 h-60 relative overflow-hidden"> {/* Adjusted width and height */}
+      <h3 className="text-lg font-medium absolute top-1 left-2">{widget.name}</h3>
       <IconButton
         className="absolute right-2 bottom-2 left-52"
         size="small"
