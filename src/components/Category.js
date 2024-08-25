@@ -22,7 +22,7 @@ const Category = ({ category, onAddWidget, onRemoveWidget }) => {
           className="p-4 bg-gray-200 border rounded-md shadow-md w-5/12 h-60 flex items-center justify-center text-gray-600 cursor-pointer"
           onClick={() => onAddWidget(category.id)}
         >
-          <Button variant="outlined">Add Widget<AddIcon className='pl-1' fontSize='small'/></Button>
+          <Button variant="outlined" size='small'><AddIcon className='pl-1 pr-1' fontSize='medium'/>Add Widget</Button>
         </div>
       </div>
     </div>

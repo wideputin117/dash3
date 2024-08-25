@@ -36,14 +36,14 @@ const Widget = ({ widget, onRemove }) => {
                 label: {
                   position: 'outside',
                   align: 'center',
-                  formatter: ({ label, value }) => `${label}: ${value}`, // Display both label and value
+                  formatter: ({ label, value }) => `${label}: ${value}`,
                 },
               }
             ]}
             width={400}
             height={190}
           >
-            <PieCenterLabel>{total}TOTAL</PieCenterLabel>
+            <PieCenterLabel>{total}</PieCenterLabel>
           </PieChart>
           </div>
           <div className="mt-2">
